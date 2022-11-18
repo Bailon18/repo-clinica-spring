@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.service.IUsuariosService;
 
+//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
 //@RestController
 @Controller
 @RequestMapping(value = "/usuario")
