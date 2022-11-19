@@ -14,21 +14,25 @@ import idat.edu.pe.demo.models.service.IUsuariosService;
 
 //TOKEN: AGREGADO POR BAILON
 //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
-//@RestController
-@Controller
+@RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
 
 	@Autowired
 	private IUsuariosService ususervice;
 	
-
-
-   @GetMapping(value = "/listarApi")
-    public List<Usuario> listarUsuariosApi(Model model) {
+   @GetMapping(value = "/listar")
+    public List<Usuario> listarUsuarios() {
         return  ususervice.listarUsuario();
     }
 
+    @GetMapping(value = "/buscar")
+	void buscarUsuarioId(Long id){
+        return ususervice.buscarPorId(id);
+    }
 	
-	
+    @PostMapping(/guardar)
+    void agregarUsuario(Usuario usuario){
+        return ususervice.guardarUsuario(usuario);
+    }
 }

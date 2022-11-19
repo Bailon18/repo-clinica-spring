@@ -18,7 +18,7 @@ public interface IUsuariosService {
 	
 
 	// busqueda usuario unico atravez del id
-	Optional<Usuario> findById(Long id);
+	Optional<Usuario> buscarPorId(Long id);
 
 
 }
