@@ -18,8 +18,8 @@ import idat.edu.pe.demo.models.service.IUsuariosService;
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
 
-	@Autowired
-	private IUsuariosService ususervice;
+    @Autowired
+    private IUsuariosService ususervice;
 	
    @GetMapping(value = "/listar")
     public List<Usuario> listarUsuarios() {
