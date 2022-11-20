@@ -15,7 +15,9 @@ public interface IUsuariosService {
 
 	// metodo para guardar un nuevo usuario
 	Usuario guardarUsuario(Usuario usuario);
-	
+
+	// Metodo para actualizar Usuario
+	Usuario actualizarUsuario(Usuario usuario);
 
 	// busqueda usuario unico atravez del id
 	Optional<Usuario> buscarPorId(Long id);

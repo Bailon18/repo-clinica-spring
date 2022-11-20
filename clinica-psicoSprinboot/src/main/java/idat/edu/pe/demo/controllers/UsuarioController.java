@@ -25,14 +25,19 @@ public class UsuarioController {
     public List<Usuario> listarUsuarios() {
         return  ususervice.listarUsuario();
     }
+	
+    @PostMapping(value = "/guardar")
+    void agregarUsuario(Usuario usuario){
+        return ususervice.guardarUsuario(usuario);
+    }
 
     @GetMapping(value = "/buscar")
 	void buscarUsuarioId(Long id){
         return ususervice.buscarPorId(id);
     }
-	
-    @PostMapping(/guardar)
-    void agregarUsuario(Usuario usuario){
-        return ususervice.guardarUsuario(usuario);
+
+    @PostMapping("/actualizar/{id}")
+    void actualizarUsuario(@RequestBody Usuario usuario, @PathVariable(id) Long id){
+        return ususervice.actualizarUsuario(usuario);
     }
 }

@@ -29,9 +29,12 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 
 
 	@Override
-	public Optional<Usuario> findById(Long id) {
-		return usuariorepo.findById(id);
+	public Optional<Usuario> buscarPorId(Long id) {
+		return usuariorepo.buscarPorId(id);
 	}
 
+	public Usuario actualizarUsuario(Usuario usuario){
+		return usuariorepo.getCurrentSession();
+	}
 
 }
