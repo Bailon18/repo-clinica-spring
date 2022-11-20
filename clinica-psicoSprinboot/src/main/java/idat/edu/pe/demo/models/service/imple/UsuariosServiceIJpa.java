@@ -16,7 +16,6 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 	@Autowired
 	private IUsuarioRepo usuariorepo;
 	
-	
 	@Override
 	public List<Usuario> listarUsuario() {
 		return usuariorepo.findAll();
@@ -27,14 +26,8 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 		return usuariorepo.save(usuario);
 	}
 
-
 	@Override
 	public Optional<Usuario> buscarPorId(Long id) {
-		return usuariorepo.buscarPorId(id);
+		return usuariorepo.findById(id);
 	}
-
-	public Usuario actualizarUsuario(Usuario usuario){
-		return usuariorepo.getCurrentSession();
-	}
-
 }

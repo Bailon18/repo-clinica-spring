@@ -22,13 +22,13 @@ public class PacientesServiceJpa implements IPacientesService {
 	}
 
 	@Override
-	public Usuario guardarPaciente(Paciente paciente) {
+	public Paciente guardarPaciente(Paciente paciente) {
 		return pacientesrepo.save(paciente);
 	}
 
 	@Override
-	public Optional<Usuario> buscarPorId(Long id) {
-		return usuariorepo.buscarPorId(id);
+	public Optional<Paciente> buscarPorId(Long id) {
+		return pacientesrepo.findById(id);
 	}
 
 }

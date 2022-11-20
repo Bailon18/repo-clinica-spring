@@ -1,13 +1,13 @@
 package idat.edu.pe.demo.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RestController;
 
 import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.service.IUsuariosService;
@@ -27,17 +27,12 @@ public class UsuarioController {
     }
 	
     @PostMapping(value = "/guardar")
-    void agregarUsuario(Usuario usuario){
+    public Usuario agregarUsuario(Usuario usuario){
         return ususervice.guardarUsuario(usuario);
     }
 
     @GetMapping(value = "/buscar")
-	void buscarUsuarioId(Long id){
+	Optional<Usuario> buscarUsuarioId(Long id){
         return ususervice.buscarPorId(id);
-    }
-
-    @PostMapping("/actualizar/{id}")
-    void actualizarUsuario(@RequestBody Usuario usuario, @PathVariable(id) Long id){
-        return ususervice.actualizarUsuario(usuario);
     }
 }

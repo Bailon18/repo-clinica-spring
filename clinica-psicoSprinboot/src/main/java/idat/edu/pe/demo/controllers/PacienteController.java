@@ -1,12 +1,13 @@
 package idat.edu.pe.demo.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 import idat.edu.pe.demo.models.entity.Paciente;
@@ -14,7 +15,7 @@ import idat.edu.pe.demo.models.service.IPacientesService;
 
 @RestController
 @RequestMapping(value = "/paciente")
-public class UsuarioController {
+public class PacienteController {
 
     @Autowired
     private IPacientesService pacservice;
@@ -25,12 +26,12 @@ public class UsuarioController {
     }
 	
     @PostMapping(value = "/guardarPaciente")
-    void agregarPaciente(Paciente paciente){
+    public Paciente agregarPaciente(Paciente paciente){
         return pacservice.guardarPaciente(paciente);
     }
 
     @GetMapping(value = "/buscarPaciente")
-	void buscarPacienteId(Long id){
+	Optional<Paciente> buscarPacienteId(Long id){
         return pacservice.buscarPorId(id);
     }
     

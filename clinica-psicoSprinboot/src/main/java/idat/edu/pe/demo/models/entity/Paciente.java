@@ -1,4 +1,4 @@
-package idat.edu.pe.app.model.entity;
+package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
 
