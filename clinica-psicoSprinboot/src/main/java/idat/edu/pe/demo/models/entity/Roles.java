@@ -58,8 +58,6 @@ public class Roles implements Serializable {
 		this.estado = estado;
 	}
 
-
-
 	private static final long serialVersionUID = 1L;
 
 }
