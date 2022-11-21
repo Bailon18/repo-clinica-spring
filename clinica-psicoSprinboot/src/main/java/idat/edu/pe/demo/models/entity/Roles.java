@@ -18,9 +18,6 @@ public class Roles implements Serializable {
 
 	private String descripcion;
 	
-	private String estado;
-	
-	
 	public Roles() {
 	}
 
@@ -49,14 +46,6 @@ public class Roles implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
 
 	private static final long serialVersionUID = 1L;
 

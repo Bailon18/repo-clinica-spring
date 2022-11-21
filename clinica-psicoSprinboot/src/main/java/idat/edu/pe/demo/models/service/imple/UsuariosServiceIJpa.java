@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.repository.IUsuarioRepo;
@@ -27,7 +28,31 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 	}
 
 	@Override
-	public Optional<Usuario> buscarPorId(Long id) {
-		return usuariorepo.findById(id);
+	public Usuario buscarPorId(Long id) {
+
+		Optional<Usuario> usuarioretorno = usuariorepo.findById(id);
+
+		if(usuarioretorno.isPresent()) {
+            return usuarioretorno.get();
+        } else {
+            return null;
+        }
+	}
+
+	@Override
+	@Transactional
+	public Usuario bloquearUsuario(Long id) {
+		
+		usuariorepo.bloquearUsuario(id);
+
+		return buscarPorId(id);
+		
+	}
+
+	@Override
+	@Transactional
+	public Usuario actualizarUsuario(Usuario usuario) {
+		return usuariorepo.save(usuario);
+		
 	}
 }

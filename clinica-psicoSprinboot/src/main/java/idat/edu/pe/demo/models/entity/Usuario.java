@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
@@ -21,6 +20,8 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	private String dni;
 
 	private String nombres;
 
@@ -30,47 +31,46 @@ public class Usuario implements Serializable {
 
 	private String contrasena;
 
-	private String celular;
-
 	private String sexo;
 
 	private String estado;
 
-	private String avatar;
-
 	// tabla intermedia
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "permisos", 
-				joinColumns = @JoinColumn(name = "usuarios_id", referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id")
-	)
+	@JoinTable(name = "permisos", joinColumns = @JoinColumn(name = "usuarios_id", referencedColumnName = "id"),
+	 inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
 	private Collection<Roles> roles;
 
 	public Usuario() {
-
 	}
 
-	public Usuario(Long id) {
+	public Usuario(Long id, String dni, String nombres, String apellidos, String correo, String contrasena, String sexo,
+			String estado, Collection<Roles> roles) {
 		this.id = id;
-	}
-
-	public Usuario(Long id, String nombres, String apellidos, String correo, String contrasena, String celular,
-			String sexo, String estado, String avatar, Collection<Roles> roles) {
-		super();
-		this.id = id;
+		this.dni = dni;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.correo = correo;
 		this.contrasena = contrasena;
-		this.celular = celular;
 		this.sexo = sexo;
 		this.estado = estado;
-		this.avatar = avatar;
 		this.roles = roles;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getNombres() {
@@ -105,14 +105,6 @@ public class Usuario implements Serializable {
 		this.contrasena = contrasena;
 	}
 
-	public String getCelular() {
-		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
 	public String getSexo() {
 		return sexo;
 	}
@@ -129,47 +121,12 @@ public class Usuario implements Serializable {
 		this.estado = estado;
 	}
 
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-
 	public Collection<Roles> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Collection<Roles> roles) {
 		this.roles = roles;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [id=");
-		builder.append(id);
-		builder.append(", nombres=");
-		builder.append(nombres);
-		builder.append(", apellidos=");
-		builder.append(apellidos);
-		builder.append(", correo=");
-		builder.append(correo);
-		builder.append(", contrasena=");
-		builder.append(contrasena);
-		builder.append(", celular=");
-		builder.append(celular);
-		builder.append(", sexo=");
-		builder.append(sexo);
-		builder.append(", estado=");
-		builder.append(estado);
-		builder.append(", avatar=");
-		builder.append(avatar);
-		builder.append(", roles=");
-		builder.append(roles);
-		builder.append("]");
-		return builder.toString();
 	}
 
 	private static final long serialVersionUID = 1L;
