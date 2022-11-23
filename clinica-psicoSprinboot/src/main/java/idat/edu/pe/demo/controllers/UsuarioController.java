@@ -30,12 +30,14 @@ public class UsuarioController {
 	
    @GetMapping("/listar")
     public List<Usuario> listarUsuarios() {
+		System.out.println("LLEGOOOOOO1");
         return  ususervice.listarUsuario();
     }
 	
     @PostMapping("/guardar")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario agregarUsuario(@RequestBody Usuario usuario){
+		System.out.println("LLEGOOOOOO2");
         return ususervice.guardarUsuario(usuario);
     }
 

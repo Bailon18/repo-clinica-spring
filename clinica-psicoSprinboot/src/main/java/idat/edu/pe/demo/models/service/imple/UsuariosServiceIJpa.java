@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +20,7 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 	
 	@Override
 	public List<Usuario> listarUsuario() {
-		return usuariorepo.findAll();
+		return usuariorepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
 	}
 
 	@Override
@@ -44,9 +45,7 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 	public Usuario bloquearUsuario(Long id) {
 		
 		usuariorepo.bloquearUsuario(id);
-
 		return buscarPorId(id);
-		
 	}
 
 	@Override
