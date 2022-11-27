@@ -27,8 +27,17 @@ public class PacientesServiceJpa implements IPacientesService {
 	}
 
 	@Override
-	public Optional<Paciente> buscarPorId(Long id) {
-		return pacientesrepo.findById(id);
+	public Paciente buscarPorId(Long id) {
+		Optional<Paciente> pacienteretorno = pacientesrepo.findById(id);
+		if(pacienteretorno.isPresent()){
+			return pacienteretorno.get();
+		} else {
+			return null;
+		}
 	}
 
+	@Override
+	public Paciente actualizarPaciente(Paciente paciente){
+		return pacientesrepo.save(paciente);
+	}
 }

@@ -1,7 +1,6 @@
 package idat.edu.pe.demo.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,19 +22,38 @@ public class PacienteController {
     @Autowired
     private IPacientesService pacservice;
 	
-   @GetMapping(value = "/listarPacientes")
+   @GetMapping("/listarPacientes")
     public List<Paciente> listarPacientes(){
         return  pacservice.listarPacientes();
     }
 	
-    @PostMapping(value = "/guardarPaciente")
+    @PostMapping("/guardarPaciente")
     public Paciente agregarPaciente(Paciente paciente){
         return pacservice.guardarPaciente(paciente);
     }
 
-    @GetMapping(value = "/buscarPaciente")
-	Optional<Paciente> buscarPacienteId(Long id){
+    @GetMapping("/buscarPaciente")
+	public Paciente buscarPacienteId(Long id){
         return pacservice.buscarPorId(id);
+    }
+
+    @PostMapping("/actualizarPaciente")
+    public Paciente actualizarPaciente(Paciente paciente){
+        
+        Paciente pacienteActual = pacservice.buscarPorId(paciente.getId());
+
+        if(pacienteActual != null){
+            pacienteActual.setTipoDoc(paciente.getTipoDoc());
+            pacienteActual.setNumDoc(paciente.getNumDoc());
+            pacienteActual.setNombres(pacienteActual.getNombres());
+            pacienteActual.setApellidos(paciente.getApellidos());
+            pacienteActual.setEstado(paciente.getEstado());
+            pacienteActual.setSexo(paciente.getSexo());
+
+            return pacservice.actualizarPaciente(pacienteActual);
+        }
+        
+        return null;
     }
     
 }
