@@ -44,6 +44,22 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
+
+	
+
+
+	public Usuario(Long id, String nombres, String apellidos, String correo, String contrasena) {
+		this.id = id;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.correo = correo;
+		this.contrasena = contrasena;
+	}
+
+
+
+
+
 	public Usuario(Long id, String dni, String nombres, String apellidos, String correo, String contrasena, String sexo,
 			String estado, Collection<Roles> roles) {
 		this.id = id;

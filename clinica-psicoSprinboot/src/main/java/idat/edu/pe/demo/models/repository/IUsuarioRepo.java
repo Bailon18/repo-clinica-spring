@@ -19,4 +19,7 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Long> {
         @Query("update Usuario u set u.estado = 'Inactivo' where u.id = ?1")
         void bloquearUsuario(Long id);
 
+        @Query("select u FROM Usuario u WHERE u.correo = ?1 and u.contrasena = ?2")
+        Usuario validarIngreso(String usuario, String contrasena);
+
 }

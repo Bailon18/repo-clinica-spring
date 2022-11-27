@@ -17,17 +17,16 @@ public class Roles implements Serializable {
 	private Long id;
 
 	private String descripcion;
-	
+
+	private Boolean seleccion;
+
 	public Roles() {
 	}
 
-	public Roles(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Roles(Long id, String descripcion) {
+	public Roles(Long id, String descripcion, Boolean seleccion) {
 		this.id = id;
 		this.descripcion = descripcion;
+		this.seleccion = seleccion;
 	}
 
 	public Long getId() {
@@ -46,6 +45,13 @@ public class Roles implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public Boolean getSeleccion() {
+		return seleccion;
+	}
+
+	public void setSeleccion(Boolean seleccion) {
+		this.seleccion = seleccion;
+	}
 
 	private static final long serialVersionUID = 1L;
 

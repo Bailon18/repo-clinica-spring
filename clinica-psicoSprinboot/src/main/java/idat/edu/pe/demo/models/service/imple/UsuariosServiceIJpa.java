@@ -54,4 +54,15 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 		return usuariorepo.save(usuario);
 		
 	}
+
+	@Override
+	public Usuario validarIngreso(String usuario, String contrasena) {
+	
+		Usuario usu = usuariorepo.validarIngreso(usuario, contrasena);
+		
+		if(usu != null){
+			return usu;
+		}
+		return null;
+	}
 }

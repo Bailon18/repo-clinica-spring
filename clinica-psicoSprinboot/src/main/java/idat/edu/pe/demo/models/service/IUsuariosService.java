@@ -21,9 +21,8 @@ public interface IUsuariosService {
 	Usuario bloquearUsuario(Long id);
 
 	Usuario actualizarUsuario(Usuario usuario);
-
-
-	
+			
+	Usuario validarIngreso(String usuario, String contrasena);
 
 
 }

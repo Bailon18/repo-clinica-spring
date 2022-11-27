@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -30,24 +31,21 @@ public class UsuarioController {
 	
    @GetMapping("/listar")
     public List<Usuario> listarUsuarios() {
-		System.out.println("LLEGOOOOOO1");
         return  ususervice.listarUsuario();
     }
 	
     @PostMapping("/guardar")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario agregarUsuario(@RequestBody Usuario usuario){
-		System.out.println("LLEGOOOOOO2");
         return ususervice.guardarUsuario(usuario);
     }
 
     @GetMapping("/buscar/{id}")
 	public Usuario buscarUsuarioId(@PathVariable Long id) {
-
 		return ususervice.buscarPorId(id);
 	}
 
-    @PostMapping("/actualizar")
+    @PutMapping("/actualizar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario actualizar(@RequestBody Usuario Usuario) {
 
@@ -70,7 +68,8 @@ public class UsuarioController {
 		return null;
 	}
 
-	@GetMapping("/bloquearUsuario/{id}")
+	
+	@PutMapping("/bloquearUsuario/{id}")
 	public Usuario bloquearUsuario(@PathVariable(value = "id") Long id) {
 		return ususervice.bloquearUsuario(id);
 	}
