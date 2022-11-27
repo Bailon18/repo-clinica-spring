@@ -17,7 +17,6 @@ public interface IUsuariosService {
 	// busqueda usuario unico atravez del id
 	Usuario buscarPorId(Long id);
 
-
 	Usuario bloquearUsuario(Long id);
 
 	Usuario actualizarUsuario(Usuario usuario);
