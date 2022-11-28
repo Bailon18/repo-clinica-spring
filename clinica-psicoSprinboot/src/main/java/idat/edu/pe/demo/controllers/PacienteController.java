@@ -22,7 +22,7 @@ public class PacienteController {
     @Autowired
     private IPacientesService pacservice;
 	
-   @GetMapping("/listarPacientes")
+    @GetMapping("/listarPacientes")
     public List<Paciente> listarPacientes(){
         return  pacservice.listarPacientes();
     }
