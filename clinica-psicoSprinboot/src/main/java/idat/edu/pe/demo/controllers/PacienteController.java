@@ -14,7 +14,7 @@ import idat.edu.pe.demo.models.entity.Paciente;
 import idat.edu.pe.demo.models.service.IPacientesService;
 
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/paciente")
 public class PacienteController {

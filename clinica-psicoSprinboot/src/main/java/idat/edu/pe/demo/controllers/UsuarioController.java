@@ -1,7 +1,6 @@
 package idat.edu.pe.demo.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 
@@ -21,7 +20,7 @@ import idat.edu.pe.demo.models.service.IUsuariosService;
 
 //TOKEN: AGREGADO POR BAILON
 //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
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
@@ -69,7 +68,7 @@ public class UsuarioController {
 	}
 
 	
-	@PutMapping("/bloquearUsuario/{id}")
+	@GetMapping("/bloquearUsuario/{id}")
 	public Usuario bloquearUsuario(@PathVariable(value = "id") Long id) {
 		return ususervice.bloquearUsuario(id);
 	}

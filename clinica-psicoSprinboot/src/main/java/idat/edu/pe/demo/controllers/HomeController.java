@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.service.IUsuariosService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/login")
 public class HomeController {
