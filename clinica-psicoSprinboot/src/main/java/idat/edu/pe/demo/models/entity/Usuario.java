@@ -2,7 +2,10 @@ package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "usuarios")
@@ -33,6 +40,7 @@ public class Usuario implements Serializable {
 
 	private String sexo;
 
+	@Column(name="estado", columnDefinition="varchar(20) default 'Activo'")
 	private String estado;
 
 	// tabla intermedia
@@ -41,12 +49,15 @@ public class Usuario implements Serializable {
 	 inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
 	private Collection<Roles> roles;
 
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "psicologo")
+    private Afiliacion afiliacion; // OneToOne
+
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "psicologo")
+	private List<Citas> listacitas;
+
 	public Usuario() {
 	}
-
-
-	
-
 
 	public Usuario(Long id, String nombres, String apellidos, String correo, String contrasena) {
 		this.id = id;
@@ -55,10 +66,6 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 		this.contrasena = contrasena;
 	}
-
-
-
-
 
 	public Usuario(Long id, String dni, String nombres, String apellidos, String correo, String contrasena, String sexo,
 			String estado, Collection<Roles> roles) {

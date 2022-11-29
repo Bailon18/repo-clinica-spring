@@ -43,13 +43,7 @@ public class PacienteController {
         Paciente pacienteActual = pacservice.buscarPorId(paciente.getId());
 
         if(pacienteActual != null){
-            pacienteActual.setTipoDoc(paciente.getTipoDoc());
-            pacienteActual.setNumDoc(paciente.getNumDoc());
-            pacienteActual.setNombres(pacienteActual.getNombres());
-            pacienteActual.setApellidos(paciente.getApellidos());
-            pacienteActual.setEstado(paciente.getEstado());
-            pacienteActual.setSexo(paciente.getSexo());
-
+            
             return pacservice.actualizarPaciente(pacienteActual);
         }
         
