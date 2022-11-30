@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,12 +38,14 @@ public class Paciente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechanacimiento;
 
-	@OneToOne
-	@JoinColumn(name = "ocupacion", referencedColumnName = "id")
+
+
+    @JoinColumn(name = "ocupacion", referencedColumnName = "id")
+    @ManyToOne(optional = false)
 	private Ocupacion ocupacion;
 
-	@OneToOne
 	@JoinColumn(name = "estadocivil", referencedColumnName = "id")
+	@ManyToOne(optional = false)
 	private EstadoCivil estadocivil;
 
 	private String documento;

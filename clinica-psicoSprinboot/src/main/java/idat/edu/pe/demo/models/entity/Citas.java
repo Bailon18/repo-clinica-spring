@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "citas")
@@ -20,6 +21,7 @@ public class Citas implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.DATE)
     private Date fechacita;
 
     private String horacita;
@@ -30,6 +32,7 @@ public class Citas implements Serializable {
     @ManyToOne(optional = false)
     private Usuario psicologo;
 
+    
     @JoinColumn(name = "paciente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Paciente paciente;
@@ -38,8 +41,9 @@ public class Citas implements Serializable {
 
     private String estadocita;
 
-    @OneToOne
+
     @JoinColumn(name = "servicio", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private Servicio servicio;
 
     private Double monto;

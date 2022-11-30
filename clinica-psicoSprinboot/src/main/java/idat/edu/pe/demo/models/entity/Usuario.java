@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -43,14 +42,14 @@ public class Usuario implements Serializable {
 	@Column(name="estado", columnDefinition="varchar(20) default 'Activo'")
 	private String estado;
 
-	// tabla intermedia
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "permisos", joinColumns = @JoinColumn(name = "usuarios_id", referencedColumnName = "id"),
 	 inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
 	private Collection<Roles> roles;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "psicologo")
-    private Afiliacion afiliacion; // OneToOne
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "psicologo")
+    private List<Afiliacion> afiliacion;
 
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "psicologo")

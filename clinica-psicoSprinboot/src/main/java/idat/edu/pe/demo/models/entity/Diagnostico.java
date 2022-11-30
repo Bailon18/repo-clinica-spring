@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "diagnostico")
@@ -24,6 +26,8 @@ public class Diagnostico implements Serializable {
     private String niveltranstorno;
     private String conclusion;
     private String otros;
+    
+    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     @OneToOne

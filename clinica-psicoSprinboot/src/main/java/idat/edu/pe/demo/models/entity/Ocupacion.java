@@ -1,6 +1,7 @@
 package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,7 +9,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 @Table(name = "ocupacion")
@@ -20,8 +22,8 @@ public class Ocupacion implements Serializable {
 
     private String descripcion;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "ocupacion")
-    private Paciente paciente;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ocupacion")
+    private List<Paciente> paciente;
 
 
     public Ocupacion() {

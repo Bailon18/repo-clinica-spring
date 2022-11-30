@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "afiliacion")
@@ -19,10 +22,11 @@ public class Afiliacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.DATE)
     private Date fechaafiliacion;
 
-    @OneToOne
     @JoinColumn(name = "psicologo", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private Usuario psicologo;
 
     private Boolean tuvocierre;

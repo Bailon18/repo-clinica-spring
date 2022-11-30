@@ -1,4 +1,3 @@
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -16,6 +15,22 @@ CREATE SCHEMA IF NOT EXISTS `clinicaBd` DEFAULT CHARACTER SET utf8 ;
 USE `clinicaBd` ;
 
 -- -----------------------------------------------------
+-- Table `mydb`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `clinicaBd`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dni` VARCHAR(45) NOT NULL,
+  `nombres` VARCHAR(45) NOT NULL,
+  `apellidos` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `contrasena` VARCHAR(100) NOT NULL,
+  `estado` ENUM("Activo", "Inactivo") NOT NULL DEFAULT 'Activo',
+  `sexo` ENUM("Masculino", "Femenino") NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`roles`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `clinicaBd`.`roles` (
@@ -26,28 +41,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuarios`
+-- Table `mydb`.`permisos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `clinicaBd`.`usuarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `dni` VARCHAR(45) NOT NULL,
-  `nombres` VARCHAR(45) NOT NULL,
-  `apellidos` VARCHAR(45) NOT NULL,
-  `correo` VARCHAR(45) NOT NULL,
-  `contrasena` VARCHAR(100) NOT NULL,
-  `estado` ENUM("0", "1") NOT NULL DEFAULT '1',
-  `sexo` ENUM("M", "F") NOT NULL,
-  `rol` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_usuarios_roles1_idx` (`rol` ASC) VISIBLE,
-  CONSTRAINT `fk_usuarios_roles1`
-    FOREIGN KEY (`rol`)
+CREATE TABLE IF NOT EXISTS `clinicaBd`.`permisos` (
+  `roles_id` INT NOT NULL,
+  `usuarios_id` INT NOT NULL,
+  PRIMARY KEY (`roles_id`, `usuarios_id`),
+  INDEX `fk_roles_has_usuarios_usuarios1_idx` (`usuarios_id` ASC) VISIBLE,
+  INDEX `fk_roles_has_usuarios_roles_idx` (`roles_id` ASC) VISIBLE,
+  CONSTRAINT `fk_roles_has_usuarios_roles`
+    FOREIGN KEY (`roles_id`)
     REFERENCES `clinicaBd`.`roles` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_roles_has_usuarios_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `clinicaBd`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

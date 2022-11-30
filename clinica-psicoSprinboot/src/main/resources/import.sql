@@ -13,3 +13,28 @@ INSERT INTO usuarios(dni,nombres,apellidos ,correo, contrasena ,sexo)VALUES("333
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 1);
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 2);
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 3);
+
+
+INSERT INTO ocupacion(descripcion)VALUES('sin ocupacion');
+INSERT INTO ocupacion(descripcion)VALUES('dependiente formal');
+INSERT INTO ocupacion(descripcion)VALUES('dependiente informal');
+INSERT INTO ocupacion(descripcion)VALUES('independiente');
+INSERT INTO ocupacion(descripcion)VALUES('estudiante');
+INSERT INTO ocupacion(descripcion)VALUES('ama de casa');
+
+INSERT INTO estadocivil(descripcion)VALUES('soltero');
+INSERT INTO estadocivil(descripcion)VALUES('casado');
+INSERT INTO estadocivil(descripcion)VALUES('divorciado');
+INSERT INTO estadocivil(descripcion)VALUES('viudo');
+INSERT INTO estadocivil(descripcion)VALUES('separado');
+INSERT INTO estadocivil(descripcion)VALUES('conviviente');
+
+INSERT INTO pacientes(nombre, apellidos, correo, direccion, distrito, documento, fechanacimiento, sexo, telefono, estadocivil, ocupacion) VALUES('Bailon', 'Paucar Montes', 'paucarmontesbailon@gmail.com', '3 de octubre', 'villa el salvador', '47094589', '1994-07-03', 'M', '9928838823', 2,2)
+INSERT INTO pacientes(nombre, apellidos, correo, direccion, distrito, documento, fechanacimiento, sexo, telefono, estadocivil, ocupacion) VALUES('Xiomara', 'Noriega Noriega', 'xiomara@gmail.com', 'av cesar vallejo', 'San juan de miraflores', '47093445', '1996-10-10', 'F', '9928838823', 1,4)
+INSERT INTO pacientes(nombre, apellidos, correo, direccion, distrito, documento, fechanacimiento, sexo, telefono, estadocivil, ocupacion) VALUES('Lucas', 'Perez Luna', 'lucas@gmail.com', 'av republica peru', 'villa maria', '88482843', '2016-02-02', 'M', '9928838823', 1,3)
+
+
+
+
+
+

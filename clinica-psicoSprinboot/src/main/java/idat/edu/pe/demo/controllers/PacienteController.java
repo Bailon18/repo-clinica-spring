@@ -3,13 +3,16 @@ package idat.edu.pe.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 
-
+import idat.edu.pe.demo.models.entity.EstadoCivil;
+import idat.edu.pe.demo.models.entity.Ocupacion;
 import idat.edu.pe.demo.models.entity.Paciente;
 import idat.edu.pe.demo.models.service.IPacientesService;
 
@@ -26,9 +29,20 @@ public class PacienteController {
     public List<Paciente> listarPacientes(){
         return  pacservice.listarPacientes();
     }
+
+    @GetMapping("/listarOcupaciones")
+    public List<Ocupacion> listarOcupaciones(){
+        return  pacservice.listarOcupacion();
+    }
+	
+    @GetMapping("/listarEstadoCi")
+    public List<EstadoCivil> listarEstadoCivil(){
+        return  pacservice.listarEstadoCivil();
+    }
+	
 	
     @PostMapping("/guardarPaciente")
-    public Paciente agregarPaciente(Paciente paciente){
+    public Paciente agregarPaciente(@RequestBody  Paciente paciente){
         return pacservice.guardarPaciente(paciente);
     }
 
@@ -38,7 +52,7 @@ public class PacienteController {
     }
 
     @PostMapping("/actualizarPaciente")
-    public Paciente actualizarPaciente(Paciente paciente){
+    public Paciente actualizarPaciente(@RequestBody Paciente paciente){
         
         Paciente pacienteActual = pacservice.buscarPorId(paciente.getId());
 

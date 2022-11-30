@@ -1,13 +1,14 @@
 package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +21,8 @@ public class Riesgo implements Serializable{
 
     private String descripcion;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "riesgo")
-    private Historia historia;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "riesgo")
+    private List<Historia> historia;
 
     public Riesgo() {
     }

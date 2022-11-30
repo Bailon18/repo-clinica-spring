@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ClinicaPsicoSprinbootApplication<clinica-psicoSprinboot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "idat.edu.pe.demo.ClinicaPsicoSprinbootApplication",
+            "projectName": "clinica-psicoSprinboot",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
