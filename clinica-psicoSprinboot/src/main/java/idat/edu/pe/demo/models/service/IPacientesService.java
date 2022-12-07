@@ -16,4 +16,5 @@ public interface IPacientesService {
 	List<Ocupacion> listarOcupacion();
 	List<EstadoCivil> listarEstadoCivil();
 
+
 }

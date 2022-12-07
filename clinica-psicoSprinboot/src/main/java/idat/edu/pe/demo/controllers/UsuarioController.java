@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.service.IUsuariosService;
 
-//TOKEN: AGREGADO POR BAILON
-//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
-@CrossOrigin
+
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
@@ -46,21 +45,21 @@ public class UsuarioController {
 
     @PutMapping("/actualizar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario actualizar(@RequestBody Usuario Usuario) {
+	public Usuario actualizar(@RequestBody Usuario usuario) {
 
 		// sin el id para que haga un merch
-		Usuario usuarioActual = ususervice.buscarPorId(Usuario.getId());
+		Usuario usuarioActual = ususervice.buscarPorId(usuario.getId());
 
 		if(usuarioActual != null){
 
-			usuarioActual.setNombres(Usuario.getNombres());
-			usuarioActual.setApellidos(Usuario.getApellidos());
-			usuarioActual.setCorreo(Usuario.getCorreo());
-			usuarioActual.setContrasena(Usuario.getContrasena());
-			usuarioActual.setCorreo(Usuario.getCorreo());
-			usuarioActual.setSexo(Usuario.getSexo());
-			usuarioActual.setEstado(Usuario.getEstado());
-			usuarioActual.setRoles(Usuario.getRoles());
+			usuarioActual.setNombres(usuario.getNombres());
+			usuarioActual.setApellidos(usuario.getApellidos());
+			usuarioActual.setCorreo(usuario.getCorreo());
+			usuarioActual.setContrasena(usuario.getContrasena());
+			usuarioActual.setCorreo(usuario.getCorreo());
+			usuarioActual.setSexo(usuario.getSexo());
+			usuarioActual.setEstado(usuario.getEstado());
+			usuarioActual.setRoles(usuario.getRoles());
 	
 			return ususervice.actualizarUsuario(usuarioActual);
 		}

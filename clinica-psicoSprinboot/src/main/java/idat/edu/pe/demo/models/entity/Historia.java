@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,18 +26,21 @@ public class Historia implements Serializable {
 
     private String motivoconsulta;
 
-    private Boolean tuvomedicacion;
+    @Column(columnDefinition = "integer default 1")
+    private int tuvomedicacion;
 
     private String medicacion;
 
-    private Boolean tuvoriesgo;
+    @Column(columnDefinition = "integer default 1")
+    private int tuvoriesgo;
 
     
     @JoinColumn(name = "riesgo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Riesgo riesgo; // OneToOne
 
-    private Boolean tuvoviolencia;
+    @Column(columnDefinition = "integer default 1")
+    private int tuvoviolencia;
 
     @ManyToMany
     @JoinTable(name = "tiposviolencia", joinColumns = {
@@ -46,7 +50,8 @@ public class Historia implements Serializable {
 
     private String lugaratencionprevio;
 
-    private Boolean tuvodianosticoprevio;
+    @Column(columnDefinition = "integer default 1")
+    private int tuvodianosticoprevio;
 
     private String diagnosticoprevio;
 
@@ -60,9 +65,9 @@ public class Historia implements Serializable {
     public Historia() {
     }
 
-    public Historia(String motivoconsulta, Boolean tuvomedicacion, String medicacion, Boolean tuvoriesgo, Riesgo riesgo,
-            Boolean tuvoviolencia, List<Violencia> historialista, String lugaratencionprevio,
-            Boolean tuvodianosticoprevio, String diagnosticoprevio) {
+    public Historia(String motivoconsulta, int tuvomedicacion, String medicacion, int tuvoriesgo, Riesgo riesgo,
+            int tuvoviolencia, List<Violencia> historialista, String lugaratencionprevio,
+            int tuvodianosticoprevio, String diagnosticoprevio) {
         this.motivoconsulta = motivoconsulta;
         this.tuvomedicacion = tuvomedicacion;
         this.medicacion = medicacion;
@@ -91,11 +96,11 @@ public class Historia implements Serializable {
         this.motivoconsulta = motivoconsulta;
     }
 
-    public Boolean getTuvomedicacion() {
+    public int getTuvomedicacion() {
         return tuvomedicacion;
     }
 
-    public void setTuvomedicacion(Boolean tuvomedicacion) {
+    public void setTuvomedicacion(int tuvomedicacion) {
         this.tuvomedicacion = tuvomedicacion;
     }
 
@@ -107,11 +112,11 @@ public class Historia implements Serializable {
         this.medicacion = medicacion;
     }
 
-    public Boolean getTuvoriesgo() {
+    public int getTuvoriesgo() {
         return tuvoriesgo;
     }
 
-    public void setTuvoriesgo(Boolean tuvoriesgo) {
+    public void setTuvoriesgo(int tuvoriesgo) {
         this.tuvoriesgo = tuvoriesgo;
     }
 
@@ -123,11 +128,11 @@ public class Historia implements Serializable {
         this.riesgo = riesgo;
     }
 
-    public Boolean getTuvoviolencia() {
+    public int getTuvoviolencia() {
         return tuvoviolencia;
     }
 
-    public void setTuvoviolencia(Boolean tuvoviolencia) {
+    public void setTuvoviolencia(int tuvoviolencia) {
         this.tuvoviolencia = tuvoviolencia;
     }
 
@@ -147,11 +152,11 @@ public class Historia implements Serializable {
         this.lugaratencionprevio = lugaratencionprevio;
     }
 
-    public Boolean getTuvodianosticoprevio() {
+    public int getTuvodianosticoprevio() {
         return tuvodianosticoprevio;
     }
 
-    public void setTuvodianosticoprevio(Boolean tuvodianosticoprevio) {
+    public void setTuvodianosticoprevio(int tuvodianosticoprevio) {
         this.tuvodianosticoprevio = tuvodianosticoprevio;
     }
 
@@ -163,5 +168,5 @@ public class Historia implements Serializable {
         this.diagnosticoprevio = diagnosticoprevio;
     }
 
-    private static final long serialVersionUID = 1L;
+    
 }

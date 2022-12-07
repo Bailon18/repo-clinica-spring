@@ -3,10 +3,13 @@ package idat.edu.pe.demo.models.service.imple;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import idat.edu.pe.demo.models.entity.EstadoCivil;
+
 import idat.edu.pe.demo.models.entity.Ocupacion;
 import idat.edu.pe.demo.models.entity.Paciente;
 import idat.edu.pe.demo.models.repository.IEstadoCivilRepo;
@@ -17,6 +20,8 @@ import idat.edu.pe.demo.models.service.IPacientesService;
 @Service
 public class PacientesServiceJpa implements IPacientesService {
 
+
+
 	@Autowired
 	private IPacientesRepo pacientesrepo;
 
@@ -26,9 +31,10 @@ public class PacientesServiceJpa implements IPacientesService {
 	@Autowired
 	private IEstadoCivilRepo estadocivilrepo;
 	
+
 	@Override
 	public List<Paciente> listarPacientes() {
-		return pacientesrepo.findAll();
+		return pacientesrepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
 	}
 
 	@Override
@@ -60,4 +66,5 @@ public class PacientesServiceJpa implements IPacientesService {
 	public List<EstadoCivil> listarEstadoCivil() {
 		return estadocivilrepo.findAll();
 	}
+
 }

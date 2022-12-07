@@ -26,6 +26,8 @@ public class Citas implements Serializable {
 
     private String horacita;
 
+    private String horafinal;
+
     private String modalidad;
 
     @JoinColumn(name = "psicologo", referencedColumnName = "id")

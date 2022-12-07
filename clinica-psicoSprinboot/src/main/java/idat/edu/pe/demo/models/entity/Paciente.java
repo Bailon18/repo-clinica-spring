@@ -17,6 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+
+
 @Entity
 @Table(name = "pacientes")
 public class Paciente implements Serializable {
@@ -34,11 +39,8 @@ public class Paciente implements Serializable {
 	private String telefono;
 
 	private String sexo;
-
-	@Temporal(TemporalType.DATE)
+	
 	private Date fechanacimiento;
-
-
 
     @JoinColumn(name = "ocupacion", referencedColumnName = "id")
     @ManyToOne(optional = false)
