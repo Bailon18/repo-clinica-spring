@@ -8,7 +8,6 @@ import idat.edu.pe.demo.models.entity.Paciente;
 
 public interface IPacientesService {
 
-	//Pacientes
 	List<Paciente> listarPacientes();
 	Paciente guardarPaciente(Paciente paciente);
 	Paciente buscarPorId(Long id);
