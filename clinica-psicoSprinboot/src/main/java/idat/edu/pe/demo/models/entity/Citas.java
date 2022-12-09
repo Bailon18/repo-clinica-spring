@@ -1,7 +1,6 @@
 package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity
 @Table(name = "citas")
@@ -21,12 +19,9 @@ public class Citas implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechacita;
+    private String fechacita;
 
-    private String horacita;
-
-    private String horafinal;
+    private int horacita;
 
     private String modalidad;
 
@@ -34,7 +29,6 @@ public class Citas implements Serializable {
     @ManyToOne(optional = false)
     private Usuario psicologo;
 
-    
     @JoinColumn(name = "paciente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Paciente paciente;
@@ -48,13 +42,12 @@ public class Citas implements Serializable {
     @ManyToOne(optional = false)
     private Servicio servicio;
 
-    private Double monto;
 
     public Citas() {
     }
 
-    public Citas(Date fechacita, String horacita, String modalidad, Usuario psicologo, Paciente paciente, String nota,
-            String estadocita, Servicio servicio, Double monto) {
+    public Citas(String fechacita, int horacita, String modalidad, Usuario psicologo, Paciente paciente, String nota,
+            String estadocita, Servicio servicio) {
         this.fechacita = fechacita;
         this.horacita = horacita;
         this.modalidad = modalidad;
@@ -63,7 +56,6 @@ public class Citas implements Serializable {
         this.nota = nota;
         this.estadocita = estadocita;
         this.servicio = servicio;
-        this.monto = monto;
     }
 
     public Long getId() {
@@ -74,19 +66,19 @@ public class Citas implements Serializable {
         this.id = id;
     }
 
-    public Date getFechacita() {
+    public String getFechacita() {
         return fechacita;
     }
 
-    public void setFechacita(Date fechacita) {
+    public void setFechacita(String fechacita) {
         this.fechacita = fechacita;
     }
 
-    public String getHoracita() {
+    public int getHoracita() {
         return horacita;
     }
 
-    public void setHoracita(String horacita) {
+    public void setHoracita(int horacita) {
         this.horacita = horacita;
     }
 
@@ -138,13 +130,6 @@ public class Citas implements Serializable {
         this.servicio = servicio;
     }
 
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
 
     private static final long serialVersionUID = 1L;
 }
