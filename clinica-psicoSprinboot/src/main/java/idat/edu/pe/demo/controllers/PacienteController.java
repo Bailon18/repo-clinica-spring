@@ -3,6 +3,8 @@ package idat.edu.pe.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.server.ResponseStatusException;
 
 import idat.edu.pe.demo.models.entity.EstadoCivil;
 import idat.edu.pe.demo.models.entity.Ocupacion;
@@ -28,53 +31,46 @@ public class PacienteController {
     private IPacientesService pacservice;
 	
     @GetMapping("/listarPacientes")
-    public List<Paciente> listarPacientes(){
-        return  pacservice.listarPacientes();
+    public ResponseEntity<Object> listarPacientes(){
+    	List<Paciente> listadoPac = pacservice.listarPacientes();
+    	return new ResponseEntity<Object>(listadoPac, HttpStatus.OK);
     }
 
     @GetMapping("/listarOcupaciones")
-    public List<Ocupacion> listarOcupaciones(){
-        return  pacservice.listarOcupacion();
+    public ResponseEntity<Object> listarOcupaciones(){
+    	List<Ocupacion> listadoOcu = pacservice.listarOcupacion();
+        return new ResponseEntity<Object>(listadoOcu, HttpStatus.OK);
     }
 	
     @GetMapping("/listarEstadoCi")
-    public List<EstadoCivil> listarEstadoCivil(){
-        return  pacservice.listarEstadoCivil();
+    public ResponseEntity<Object> listarEstadoCivil(){
+    	List<EstadoCivil> listadoEstCiv = pacservice.listarEstadoCivil();
+        return new ResponseEntity<Object>(listadoEstCiv, HttpStatus.OK);
     }
 
     @PostMapping("/guardarPaciente")
-    public Paciente agregarPaciente(@RequestBody  Paciente paciente){
-        return pacservice.guardarPaciente(paciente);
+    public ResponseEntity<Object> agregarPaciente(@RequestBody  Paciente paciente){
+    	Paciente pacienteNuevo = pacservice.guardarPaciente(paciente); 
+        return new ResponseEntity<Object>(pacienteNuevo, HttpStatus.CREATED);
     }
 
     @GetMapping("/buscarPaciente/{id}")
-	public Paciente buscarPacienteId(@PathVariable(name = "id") Long id){
-        return pacservice.buscarPorId(id);
+	public ResponseEntity<Object> buscarPacienteId(@PathVariable(name = "id") Long id){
+    	Paciente paciente = pacservice.buscarPorId(id);
+    	if(id == null) {
+    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    	}
+        return new ResponseEntity<Object>(paciente, HttpStatus.OK);
     }
 
     @PutMapping("/actualizarPaciente")
-    public Paciente actualizarPaciente(@RequestBody Paciente paciente){
-        
+    public ResponseEntity<Object> actualizarPaciente(@RequestBody Paciente paciente){
         Paciente pacienteActual = pacservice.buscarPorId(paciente.getId());
-
-        if(pacienteActual != null){
-
-            pacienteActual.setNombre(paciente.getNombre());
-            pacienteActual.setApellidos(paciente.getApellidos());
-            pacienteActual.setFechanacimiento(paciente.getFechanacimiento());
-            pacienteActual.setSexo(paciente.getSexo());
-            pacienteActual.setDocumento(paciente.getDocumento());
-            pacienteActual.setDistrito(paciente.getDistrito());
-            pacienteActual.setDireccion(paciente.getDireccion());
-            pacienteActual.setEstadocivil(paciente.getEstadocivil());
-            pacienteActual.setOcupacion(paciente.getOcupacion());
-            pacienteActual.setCorreo(paciente.getCorreo());
-            pacienteActual.setTelefono(paciente.getTelefono());
-
-            return pacservice.actualizarPaciente(pacienteActual);
+        if(pacienteActual == null) {
+        	throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        
-        return null;
+        pacservice.actualizarPaciente(paciente);
+        return new ResponseEntity<Object>(HttpStatus.ACCEPTED);
     }
     
 }
