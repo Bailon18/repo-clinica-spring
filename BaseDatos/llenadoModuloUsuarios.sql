@@ -13,6 +13,7 @@ INSERT INTO usuarios(dni,nombres,apellidos ,correo, contrasena ,sexo)VALUES("333
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 1);
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 2);
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 3);
+INSERT INTO permisos(usuarios_id, roles_id)VALUES(2, 3);
 
 
 INSERT INTO ocupacion(descripcion)VALUES('sin ocupacion');

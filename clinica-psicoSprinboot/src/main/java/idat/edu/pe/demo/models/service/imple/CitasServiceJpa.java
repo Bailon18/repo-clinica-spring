@@ -19,5 +19,5 @@ public class CitasServiceJpa implements ICitasService{
     public List<Citas> buscarCitas(Long idPsicologa, String fecha) {
         return repositorio.buscarCitas(idPsicologa, fecha);
     }
-    
+
 }

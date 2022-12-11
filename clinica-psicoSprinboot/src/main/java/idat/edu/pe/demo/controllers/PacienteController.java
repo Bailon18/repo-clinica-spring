@@ -54,27 +54,7 @@ public class PacienteController {
 
     @PutMapping("/actualizarPaciente")
     public Paciente actualizarPaciente(@RequestBody Paciente paciente){
-        
-        Paciente pacienteActual = pacservice.buscarPorId(paciente.getId());
-
-        if(pacienteActual != null){
-
-            pacienteActual.setNombre(paciente.getNombre());
-            pacienteActual.setApellidos(paciente.getApellidos());
-            pacienteActual.setFechanacimiento(paciente.getFechanacimiento());
-            pacienteActual.setSexo(paciente.getSexo());
-            pacienteActual.setDocumento(paciente.getDocumento());
-            pacienteActual.setDistrito(paciente.getDistrito());
-            pacienteActual.setDireccion(paciente.getDireccion());
-            pacienteActual.setEstadocivil(paciente.getEstadocivil());
-            pacienteActual.setOcupacion(paciente.getOcupacion());
-            pacienteActual.setCorreo(paciente.getCorreo());
-            pacienteActual.setTelefono(paciente.getTelefono());
-
-            return pacservice.actualizarPaciente(pacienteActual);
-        }
-        
-        return null;
+        return pacservice.actualizarPaciente(paciente);
     }
     
 }

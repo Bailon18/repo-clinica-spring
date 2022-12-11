@@ -30,9 +30,7 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 
 	@Override
 	public Usuario buscarPorId(Long id) {
-
 		Optional<Usuario> usuarioretorno = usuariorepo.findById(id);
-
 		if(usuarioretorno.isPresent()) {
             return usuarioretorno.get();
         } else {
