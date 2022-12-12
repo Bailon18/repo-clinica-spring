@@ -54,6 +54,7 @@ public class PacientesServiceJpa implements IPacientesService {
 
 	@Override
 	public Paciente actualizarPaciente(Paciente paciente){
+<<<<<<< HEAD
 
 
         Paciente pacienteActual = buscarPorId(paciente.getId());
@@ -76,6 +77,22 @@ public class PacientesServiceJpa implements IPacientesService {
         }
         
         return null;
+=======
+		Paciente pacienteActual = pacientesrepo.findById(paciente.getId()).get();
+		pacienteActual.setNombre(paciente.getNombre());
+	    pacienteActual.setApellidos(paciente.getApellidos());
+	    pacienteActual.setFechanacimiento(paciente.getFechanacimiento());
+	    pacienteActual.setSexo(paciente.getSexo());
+	    pacienteActual.setDocumento(paciente.getDocumento());
+	    pacienteActual.setDistrito(paciente.getDistrito());
+	    pacienteActual.setDireccion(paciente.getDireccion());
+	    pacienteActual.setEstadocivil(paciente.getEstadocivil());
+	    pacienteActual.setOcupacion(paciente.getOcupacion());
+	    pacienteActual.setCorreo(paciente.getCorreo());
+	    pacienteActual.setTelefono(paciente.getTelefono());
+	    Paciente pacienteActualizado =  pacientesrepo.save(pacienteActual);
+		return pacienteActualizado;
+>>>>>>> 2eaabb7dd4748994a5f51f559e71c0047638399a
 	}
 
 	@Override
