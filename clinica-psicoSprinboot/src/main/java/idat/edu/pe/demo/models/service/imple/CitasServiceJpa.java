@@ -1,5 +1,6 @@
 package idat.edu.pe.demo.models.service.imple;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,13 @@ public class CitasServiceJpa implements ICitasService{
     private ICitasRepor repositorio;
 
     @Override
-    public List<Citas> buscarCitas(Long idPsicologa, String fecha) {
+    public List<Citas> buscarCitas(Long idPsicologa, Date fecha) {
         return repositorio.buscarCitas(idPsicologa, fecha);
     }
 
+    @Override
+    public List<Integer> listardiascitas(Integer dia) {
+        return repositorio.listardiascitas(dia);
+    }
+    
 }

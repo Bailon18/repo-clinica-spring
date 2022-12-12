@@ -1,6 +1,7 @@
 package idat.edu.pe.demo.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -19,7 +22,8 @@ public class Citas implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fechacita;
+    @Temporal(TemporalType.DATE)
+    private Date fechacita;
 
     private int horacita;
 
@@ -46,7 +50,7 @@ public class Citas implements Serializable {
     public Citas() {
     }
 
-    public Citas(String fechacita, int horacita, String modalidad, Usuario psicologo, Paciente paciente, String nota,
+    public Citas(Date fechacita, int horacita, String modalidad, Usuario psicologo, Paciente paciente, String nota,
             String estadocita, Servicio servicio) {
         this.fechacita = fechacita;
         this.horacita = horacita;
@@ -66,11 +70,11 @@ public class Citas implements Serializable {
         this.id = id;
     }
 
-    public String getFechacita() {
+    public Date getFechacita() {
         return fechacita;
     }
 
-    public void setFechacita(String fechacita) {
+    public void setFechacita(Date fechacita) {
         this.fechacita = fechacita;
     }
 

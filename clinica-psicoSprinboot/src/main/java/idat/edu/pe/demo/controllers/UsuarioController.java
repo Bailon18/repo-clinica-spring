@@ -46,7 +46,8 @@ public class UsuarioController {
     @PutMapping("/actualizar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario actualizar(@RequestBody Usuario usuario) {
-		
+
+		// sin el id para que haga un merch
 		Usuario usuarioActual = ususervice.buscarPorId(usuario.getId());
 
 		if(usuarioActual != null){

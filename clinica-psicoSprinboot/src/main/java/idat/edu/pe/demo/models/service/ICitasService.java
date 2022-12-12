@@ -1,12 +1,14 @@
 package idat.edu.pe.demo.models.service;
 
+import java.util.Date;
 import java.util.List;
 
 import idat.edu.pe.demo.models.entity.Citas;
-import idat.edu.pe.demo.models.entity.Usuario;
 
 public interface ICitasService {
     
-    List<Citas> buscarCitas(Long idPsicologa, String fecha);
+    List<Citas> buscarCitas(Long idPsicologa, Date fecha);
+
+    List<Integer> listardiascitas(Integer dia);
 
 }
