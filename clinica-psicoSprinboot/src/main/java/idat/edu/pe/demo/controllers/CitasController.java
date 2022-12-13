@@ -25,7 +25,6 @@ public class CitasController {
     private ICitasService servicio;
     
     @GetMapping("/buscarcitas/{idpsico}/{fecha}")
-<<<<<<< HEAD
 	public ResponseEntity<Object> buscarCitas(@PathVariable(name = "idpsico") Long idpsico, @PathVariable(name = "fecha") Date fecha){
 
 		System.out.println("FECHA "+fecha);
@@ -46,14 +45,6 @@ public class CitasController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Object>(listadias, HttpStatus.OK);
-=======
-	public ResponseEntity<Object> buscarCitas(@PathVariable(name = "idpsico") Long idpsico, @PathVariable(name = "fecha") String fecha){
-    	List<Citas> listadoCitas = servicio.buscarCitas(idpsico, fecha);
-    	if(idpsico == null && fecha == null) {
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<Object>(listadoCitas, HttpStatus.OK);
->>>>>>> 2eaabb7dd4748994a5f51f559e71c0047638399a
 	}
     
 }
