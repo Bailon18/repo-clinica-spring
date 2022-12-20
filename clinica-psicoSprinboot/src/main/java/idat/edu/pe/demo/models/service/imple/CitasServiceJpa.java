@@ -25,5 +25,20 @@ public class CitasServiceJpa implements ICitasService{
     public List<Integer> listardiascitas(Integer dia) {
         return repositorio.listardiascitas(dia);
     }
+
+    @Override
+    public Citas guardarcita(Citas cita) {
+        return repositorio.save(cita);
+    }
+
+    @Override
+    public List<Citas> listarcitas() {
+        return repositorio.findAll();
+    }
+
+    @Override
+    public List<Citas> validarcita(Long idPaciente, Date fecha) {
+        return repositorio.validarcita(idPaciente,fecha);
+    }
     
 }

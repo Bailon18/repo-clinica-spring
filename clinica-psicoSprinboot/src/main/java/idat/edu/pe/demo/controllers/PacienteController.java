@@ -2,6 +2,7 @@ package idat.edu.pe.demo.controllers;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.server.ResponseStatusException;
 
+import idat.edu.pe.demo.Dtos.PacienteDTO;
 import idat.edu.pe.demo.models.entity.EstadoCivil;
 import idat.edu.pe.demo.models.entity.Ocupacion;
 import idat.edu.pe.demo.models.entity.Paciente;
@@ -35,6 +37,7 @@ public class PacienteController {
     	List<Paciente> listadoPac = pacservice.listarPacientes();
     	return new ResponseEntity<Object>(listadoPac, HttpStatus.OK);
     }
+    
 
     @GetMapping("/listarOcupaciones")
     public ResponseEntity<Object> listarOcupaciones(){
@@ -61,6 +64,28 @@ public class PacienteController {
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
         return new ResponseEntity<Object>(paciente, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/pagendar/{dni}")
+	public ResponseEntity<Object> buscarpacienteagendar(@PathVariable(name = "dni") String dni){
+    	
+    	if(dni != null) {
+
+            Paciente paciente = pacservice.pacientecita(dni);
+
+            if(paciente != null){
+                ModelMapper modelmaper = new ModelMapper();
+        
+                PacienteDTO pacienteDTO = modelmaper.map(paciente, PacienteDTO.class);
+                System.out.println("DTO "+pacienteDTO);
+                
+                return new ResponseEntity<Object>(pacienteDTO, HttpStatus.OK);
+            }
+    	}
+        return null;
+        
+
     }
 
     @PutMapping("/actualizarPaciente")

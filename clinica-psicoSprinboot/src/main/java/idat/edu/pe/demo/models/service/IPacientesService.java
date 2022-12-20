@@ -16,5 +16,7 @@ public interface IPacientesService {
 	List<Ocupacion> listarOcupacion();
 	List<EstadoCivil> listarEstadoCivil();
 
+	Paciente pacientecita(String documento);
+
 
 }

@@ -85,4 +85,9 @@ public class PacientesServiceJpa implements IPacientesService {
 		return estadocivilrepo.findAll();
 	}
 
+	@Override
+	public Paciente pacientecita(String documento) {
+		return pacientesrepo.pacientecita(documento) ;
+	}
+
 }

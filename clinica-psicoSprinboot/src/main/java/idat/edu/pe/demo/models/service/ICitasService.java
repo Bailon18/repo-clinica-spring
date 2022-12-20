@@ -11,4 +11,10 @@ public interface ICitasService {
 
     List<Integer> listardiascitas(Integer dia);
 
+    Citas guardarcita(Citas cita);
+
+    List<Citas> listarcitas();
+
+    List<Citas> validarcita(Long idPaciente, Date fecha);
+
 }
