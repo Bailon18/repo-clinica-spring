@@ -1,6 +1,5 @@
 package idat.edu.pe.demo.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +16,14 @@ import idat.edu.pe.demo.models.service.IHistoriaService;
 @RestController
 @RequestMapping(value = "/historia")
 public class HistoriaController {
-    
-    @Autowired
-    private IHistoriaService historiaSer;
-    
-    @GetMapping("/buscarHistoria/{id}")
-	public ResponseEntity<Object> buscarPorId(@PathVariable("id") Long id){
+
+	@Autowired
+	private IHistoriaService historiaSer;
+
+	@GetMapping("/buscarHistoria/{id}")
+	public ResponseEntity<Object> buscarPorId(@PathVariable("id") Long id) {
 		Historia historia = historiaSer.buscarhistoriaId(id);
-		if(historia == null) {
+		if (historia == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Object>(historia, HttpStatus.OK);

@@ -14,13 +14,13 @@ import idat.edu.pe.demo.models.service.IUsuariosService;
 @RestController
 @RequestMapping(value = "/login")
 public class HomeController {
-	
+
     @Autowired
     private IUsuariosService ususervice;
 
     @GetMapping("/validar/{correo}/{contra}")
     private Usuario validarIngreso(@PathVariable(value = "correo") String correo,
-                                 @PathVariable(value = "contra") String contrasena){
+            @PathVariable(value = "contra") String contrasena) {
 
         return ususervice.validarIngreso(correo, contrasena);
     }

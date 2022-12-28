@@ -9,6 +9,8 @@ public interface ICitasService {
     
     List<Citas> buscarCitas(Long idPsicologa, Date fecha);
 
+    Citas buscarcitasid(Long id);
+
     List<Integer> listardiascitas(Integer dia);
 
     Citas guardarcita(Citas cita);

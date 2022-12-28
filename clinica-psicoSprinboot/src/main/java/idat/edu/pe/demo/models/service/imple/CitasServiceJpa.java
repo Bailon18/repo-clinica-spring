@@ -18,7 +18,10 @@ public class CitasServiceJpa implements ICitasService{
 
     @Override
     public List<Citas> buscarCitas(Long idPsicologa, Date fecha) {
-        return repositorio.buscarCitas(idPsicologa, fecha);
+        if(idPsicologa != null && fecha != null){
+            return repositorio.buscarCitas(idPsicologa, fecha);
+        }
+        return null;
     }
 
     @Override
@@ -39,6 +42,19 @@ public class CitasServiceJpa implements ICitasService{
     @Override
     public List<Citas> validarcita(Long idPaciente, Date fecha) {
         return repositorio.validarcita(idPaciente,fecha);
+    }
+
+    @Override
+    public Citas buscarcitasid(Long id) {
+        
+        if(id != null){
+            Citas cita = repositorio.findById(id).get();
+            if(cita != null){
+                return cita;
+            }
+        }
+        
+        return null;
     }
     
 }
