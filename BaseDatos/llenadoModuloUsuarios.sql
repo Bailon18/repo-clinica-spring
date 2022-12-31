@@ -10,7 +10,6 @@ INSERT INTO usuarios(dni,nombres,apellidos ,correo, contrasena ,sexo)VALUES("222
 INSERT INTO usuarios(dni,nombres,apellidos ,correo, contrasena ,sexo)VALUES("33333333", "Herlly", "Arteaga Sedano", "herlly@gmail.com", "admin122", "Masculino");
 
 
-
 -- insert Permisos
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(1, 1);
 INSERT INTO permisos(usuarios_id, roles_id)VALUES(2, 2);
@@ -67,31 +66,29 @@ VALUES('Graciela', 'Pizarro Martinez', 'graciela@gmail.com', 'av cesar vallejo',
 INSERT INTO pacientes(nombre, apellidos, correo, direccion, distrito, documento, fechanacimiento, sexo, telefono, estadocivil, ocupacion) 
 VALUES('Alexis', 'Cruz Champi', 'alexis@gmail.com', 'av republica peru', 'villa maria', '22238384', '2016-02-02', 'M', '982828394', 1,3);
 
+
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
 VALUES('pendiente', '2022-12-08', 9, 'Virtual', 'Se atendio con el paciente x',2, 3, 1 );
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
 VALUES('pendiente', '2022-12-08', 12, 'Virtual', 'Se atendio con el paciente x',1, 3, 1 );
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-08', 18, 'Virtual', 'Se atendio con el paciente x',3, 3, 1 );
+VALUES('pendiente', '2022-12-08', 18, 'Virtual', 'Se atendio con el paciente x',6, 3, 1 );
 
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-09', 9, 'Virtual', 'Se atendio con el paciente x',2, 3, 1 );
+VALUES('pendiente', '2022-12-10', 17, 'Virtual', 'Se atendio con el paciente x',3, 3, 1 );
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-09', 12, 'Virtual', 'Se atendio con el paciente x',1, 3, 1 );
-INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-09', 18, 'Virtual', 'Se atendio con el paciente x',3, 3, 1 );
-
-
-INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-10', 9, 'Virtual', 'Se atendio con el paciente x',2, 3, 1 );
-INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
-VALUES('pendiente', '2022-12-10', 12, 'Virtual', 'Se atendio con el paciente x',1, 3, 1 );
+VALUES('pendiente', '2022-12-10', 1, 'Virtual', 'Se atendio con el paciente x',5, 3, 1 );
 INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
 VALUES('pendiente', '2022-12-10', 18, 'Virtual', 'Se atendio con el paciente x',3, 3, 1 );
 
 
+INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
+VALUES('pendiente', '2022-12-12', 9, 'Virtual', 'Se atendio con el paciente x',7, 3, 1 );
+INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
+VALUES('pendiente', '2022-12-12', 12, 'Virtual', 'Se atendio con el paciente x',3, 3, 1 );
+INSERT INTO citas(estadocita, fechacita, horacita, modalidad, nota, paciente, psicologo, servicio)
+VALUES('pendiente', '2022-12-12', 18, 'Virtual', 'Se atendio con el paciente x',2, 3, 1 );
 
-select DISTINCT day(fechacita) from citas where month(fechacita) = 12
 
 
 

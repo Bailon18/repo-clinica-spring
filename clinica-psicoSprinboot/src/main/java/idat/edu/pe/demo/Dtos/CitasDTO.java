@@ -15,6 +15,8 @@ public class CitasDTO {
 
     private String psicologonombre;
 
+    private Long psicologoid;
+
     private Long idpaciente;
 
     private String pacientenombres;
@@ -23,18 +25,19 @@ public class CitasDTO {
 
     private String estadocita;
 
-    private String servicionombre;
+    private Long servicionombre;
 
     public CitasDTO() {
     }
 
-    public CitasDTO(Long id, Date fechacita, int horacita, String modalidad, String psicologonombre, Long idpaciente,
-            String pacientenombres, String nota, String estadocita, String servicionombre) {
+    public CitasDTO(Long id, Date fechacita, int horacita, String modalidad, String psicologonombre, Long psicologoid,
+            Long idpaciente, String pacientenombres, String nota, String estadocita, Long servicionombre) {
         this.id = id;
         this.fechacita = fechacita;
         this.horacita = horacita;
         this.modalidad = modalidad;
         this.psicologonombre = psicologonombre;
+        this.psicologoid = psicologoid;
         this.idpaciente = idpaciente;
         this.pacientenombres = pacientenombres;
         this.nota = nota;
@@ -82,6 +85,14 @@ public class CitasDTO {
         this.psicologonombre = psicologonombre;
     }
 
+    public Long getPsicologoid() {
+        return psicologoid;
+    }
+
+    public void setPsicologoid(Long psicologoid) {
+        this.psicologoid = psicologoid;
+    }
+
     public Long getIdpaciente() {
         return idpaciente;
     }
@@ -114,14 +125,15 @@ public class CitasDTO {
         this.estadocita = estadocita;
     }
 
-    public String getServicionombre() {
+    public Long getServicionombre() {
         return servicionombre;
     }
 
-    public void setServicionombre(String servicionombre) {
+    public void setServicionombre(Long servicionombre) {
         this.servicionombre = servicionombre;
     }
 
+    
     
     
 

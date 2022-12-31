@@ -42,10 +42,10 @@ public class CitasController {
 		if (cita != null) {
 
 			CitasDTO citadto = new CitasDTO(cita.getId(), cita.getFechacita(), cita.getHoracita(), cita.getModalidad(),
-					cita.getPsicologo().getNombres() + " " + cita.getPsicologo().getApellidos(),
+					cita.getPsicologo().getNombres() + " " + cita.getPsicologo().getApellidos(), cita.getPsicologo().getId(),
 					cita.getPaciente().getId(),
 					cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellidos(),
-					cita.getNota(), cita.getEstadocita(), cita.getServicio().getDescripcion());
+					cita.getNota(), cita.getEstadocita(), cita.getServicio().getId());
 
 			return new ResponseEntity<Object>(citadto, HttpStatus.OK);
 		}
