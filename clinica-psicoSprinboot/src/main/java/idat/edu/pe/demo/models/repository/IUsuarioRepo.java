@@ -22,4 +22,9 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Long> {
         @Query("select u FROM Usuario u WHERE u.correo = ?1 and u.contrasena = ?2")
         Usuario validarIngreso(String usuario, String contrasena);
 
+        @Query("select u FROM Usuario u WHERE u.correo = ?1")
+        Usuario validarCorreo(String correo);
+
+        @Query("select u FROM Usuario u WHERE u.dni = ?1")
+        Usuario validarDni(String dni);
 }

@@ -19,6 +19,7 @@ import idat.edu.pe.demo.models.entity.Usuario;
 import idat.edu.pe.demo.models.service.IUsuariosService;
 
 
+
 @CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping(value = "/usuario")
@@ -70,5 +71,15 @@ public class UsuarioController {
 	@GetMapping("/bloquearUsuario/{id}")
 	public Usuario bloquearUsuario(@PathVariable(value = "id") Long id) {
 		return ususervice.bloquearUsuario(id);
+	}
+
+	@GetMapping(value="/validarcorreo/{correo}")
+	public Usuario validarCorreo(@PathVariable(value = "correo") String correo) {
+		return ususervice.validarCorreo(correo);
+	}
+	
+	@GetMapping(value="/validardni/{dni}")
+	public Usuario validarDni(@PathVariable(value = "dni") String dni) {
+		return ususervice.validarDni(dni);
 	}
 }

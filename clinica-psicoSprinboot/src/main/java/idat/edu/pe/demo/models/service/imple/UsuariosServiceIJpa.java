@@ -63,4 +63,25 @@ public class UsuariosServiceIJpa implements IUsuariosService {
 		}
 		return null;
 	}
+
+	@Override
+	public Usuario validarCorreo(String correo) {
+		
+		Usuario usuario = usuariorepo.validarCorreo(correo);
+		if(usuario != null){
+			return usuario;
+		}
+		return null;
+	}
+
+	@Override
+	public Usuario validarDni(String dni) {
+		
+		Usuario usuario = usuariorepo.validarDni(dni);
+		if(usuario != null){
+			return usuario;
+		}
+
+		return null;
+	}
 }

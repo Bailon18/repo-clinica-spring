@@ -23,5 +23,9 @@ public interface IUsuariosService {
 			
 	Usuario validarIngreso(String usuario, String contrasena);
 
+	Usuario validarCorreo(String correo);
+
+	Usuario validarDni(String dni);
+
 
 }
