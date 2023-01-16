@@ -71,6 +71,7 @@ public class PacienteController {
             Paciente paciente = pacservice.pacientecita(dni);
 
             if (paciente != null) {
+                
                 ModelMapper modelmaper = new ModelMapper();
 
                 PacienteDTO pacienteDTO = modelmaper.map(paciente, PacienteDTO.class);

@@ -12,6 +12,4 @@ public interface IPacientesRepo extends JpaRepository<Paciente, Long> {
 
     @Query("select  p FROM Paciente p WHERE p.documento = ?1")
     Paciente pacientecita(String documento);
-
-
 }
