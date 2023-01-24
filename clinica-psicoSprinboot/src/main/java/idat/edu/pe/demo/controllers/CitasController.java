@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -89,4 +90,17 @@ public class CitasController {
 		return null;
 
 	}
+	
+	@PutMapping("/actualizarcita")
+	public Citas actualizarcita(@RequestBody Citas cita){
+		
+		return servicio.actualizarcita(cita);
+	}
+ 	
+	
+	@GetMapping("/eliminarcita/{idcita}")
+	public void eliminarcita(@PathVariable(name = "idcita") Long idcita) {
+		servicio.eliminarcita(idcita);
+	}
+	
 }

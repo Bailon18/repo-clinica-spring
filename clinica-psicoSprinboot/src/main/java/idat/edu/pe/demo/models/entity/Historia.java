@@ -167,6 +167,7 @@ public class Historia implements Serializable {
     public void setDiagnosticoprevio(String diagnosticoprevio) {
         this.diagnosticoprevio = diagnosticoprevio;
     }
-
+    
+    private static final long serialVersionUID = 1L;
     
 }

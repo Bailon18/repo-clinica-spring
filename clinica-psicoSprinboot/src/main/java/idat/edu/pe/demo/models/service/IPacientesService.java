@@ -17,6 +17,14 @@ public interface IPacientesService {
 	List<EstadoCivil> listarEstadoCivil();
 
 	Paciente pacientecita(String documento);
+	
+	Paciente validarCorreo(String correo);
+
+	Paciente validarDni(String dni);
+	
+	
+	List<Object> busquedapacienteagendar(Long idpsico, Long idpacien);
+
 
 
 }

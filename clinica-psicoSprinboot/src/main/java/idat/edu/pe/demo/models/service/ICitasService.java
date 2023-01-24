@@ -18,5 +18,9 @@ public interface ICitasService {
     List<Citas> listarcitas();
 
     List<Citas> validarcita(Long idPaciente, Date fecha);
+    
+    Citas actualizarcita(Citas cita);
+    
+    void eliminarcita(Long idci);
 
 }

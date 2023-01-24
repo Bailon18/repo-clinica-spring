@@ -93,5 +93,39 @@ public class PacienteController {
         pacservice.actualizarPaciente(paciente);
         return new ResponseEntity<Object>(HttpStatus.ACCEPTED);
     }
+    
+	@GetMapping(value="/validarcorreo/{correo}")
+	public Paciente validarCorreo(@PathVariable(value = "correo") String correo) {
+		return pacservice.validarCorreo(correo);
+	}
+	
+	@GetMapping(value="/validardni/{documento}")
+	public Paciente validarDni(@PathVariable(value = "documento") String documento) {
+		return pacservice.validarDni(documento);
+	}
+    
+	@GetMapping(value="/buscarpaciente/{idpsico}/{idpacien}")
+	public Paciente buscarpaciente(@PathVariable(value = "idpsico") Long idpsico, 
+			@PathVariable(value = "idpacien") Long idpacien) 
+	{
+		
+		Paciente respuesta;
+		
+		List<Object> res = pacservice.busquedapacienteagendar(idpsico, idpacien);
+		
+		Paciente paciente = pacservice.buscarPorId(idpacien);
+		
+		if(res.size() == 0) {
+			respuesta = null; // es porque el paciente pertenece a otra psicologa -> RETORNA NULL -> no se muestra nombr
+		}else {
+			 // es porque el paciente y psicologa conciden -> RETORNA USUARIO -> se muestra nombre
+			// es por  el paciente no esta en afiliacion -> RETORNA USUARIO -> se muestra nombre
+			respuesta = paciente;
+		}
+		
+		return respuesta;
+		
+	}
+    
 
 }

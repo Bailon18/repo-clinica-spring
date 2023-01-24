@@ -3,6 +3,7 @@ package idat.edu.pe.demo.models.service.imple;
 import java.util.Date;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,36 @@ public class CitasServiceJpa implements ICitasService{
         
         return null;
     }
+
+	@Override
+	public Citas actualizarcita(Citas cita) {
+		
+		Citas citaactual = repositorio.findById(cita.getId()).get();
+		
+		if(citaactual != null) {
+			
+			citaactual.setPaciente(cita.getPaciente());
+			citaactual.setEstadocita(cita.getEstadocita());
+			citaactual.setFechacita(cita.getFechacita());
+			citaactual.setHoracita(cita.getHoracita());
+			citaactual.setModalidad(cita.getModalidad());
+			citaactual.setNota(cita.getNota());
+			citaactual.setPsicologo(cita.getPsicologo());
+			citaactual.setServicio(cita.getServicio());
+			
+			return repositorio.save(cita);
+		}
+		
+		
+		return null;
+	}
+
+	@Override
+	public void eliminarcita(Long idci) {
+		repositorio.deleteById(idci);
+	}
+
+
+
     
 }

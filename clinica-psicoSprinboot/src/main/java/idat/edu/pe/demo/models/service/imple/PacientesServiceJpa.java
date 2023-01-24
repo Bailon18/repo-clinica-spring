@@ -90,4 +90,32 @@ public class PacientesServiceJpa implements IPacientesService {
 		return pacientesrepo.pacientecita(documento) ;
 	}
 
+	@Override
+	public Paciente validarCorreo(String correo) {
+		
+		Paciente paciente = pacientesrepo.validarCorreo(correo);
+		if(paciente != null){
+			return paciente;
+		}
+		return null;
+	}
+
+	@Override
+	public Paciente validarDni(String dni) {
+		
+		Paciente paciente = pacientesrepo.validarDni(dni);
+		if(paciente != null){
+			return paciente;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<Object>  busquedapacienteagendar(Long idpsico, Long idpacien) {
+		return pacientesrepo.busquedaaaa(idpsico, idpacien);
+	}
+
+
+
 }
