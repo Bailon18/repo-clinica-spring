@@ -22,5 +22,8 @@ public interface ICitasService {
     Citas actualizarcita(Citas cita);
     
     void eliminarcita(Long idci);
+    
+    
+    List<Object> listarcitasxpsicologa(Long idpsico);
 
 }

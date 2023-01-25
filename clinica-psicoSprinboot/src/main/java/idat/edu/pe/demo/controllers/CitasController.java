@@ -93,14 +93,17 @@ public class CitasController {
 	
 	@PutMapping("/actualizarcita")
 	public Citas actualizarcita(@RequestBody Citas cita){
-		
 		return servicio.actualizarcita(cita);
 	}
  	
-	
 	@GetMapping("/eliminarcita/{idcita}")
 	public void eliminarcita(@PathVariable(name = "idcita") Long idcita) {
 		servicio.eliminarcita(idcita);
 	}
 	
+	@GetMapping("/listarcitasxpiscologa/{idpsico}")
+	public List<Object> listarcitaxpsicologa(@PathVariable(name = "idpsico") Long idpsico){
+		
+		return servicio.listarcitasxpsicologa(idpsico);
+	}
 }

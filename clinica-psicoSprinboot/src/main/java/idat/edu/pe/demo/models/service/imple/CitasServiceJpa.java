@@ -86,6 +86,18 @@ public class CitasServiceJpa implements ICitasService{
 		repositorio.deleteById(idci);
 	}
 
+	@Override
+	public List<Object> listarcitasxpsicologa(Long idpsico) {
+		
+		List<Object> res = repositorio.listacitaspsicologa(idpsico);
+		
+		if(res != null) {
+			return res;
+		}
+		
+		return null;
+	}
+
 
 
     
