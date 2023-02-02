@@ -3,6 +3,7 @@ package idat.edu.pe.demo.models.service.imple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import idat.edu.pe.demo.models.entity.Diagnostico;
 import idat.edu.pe.demo.models.entity.Historia;
 import idat.edu.pe.demo.models.repository.IHistoriaRepo;
 import idat.edu.pe.demo.models.service.IHistoriaService;
@@ -18,5 +19,17 @@ public class HistoriaServiceJpa implements IHistoriaService {
     public Historia buscarhistoriaId(Long id) {
         return historiarepo.findById(id).get();
     }
+
+
+	@Override
+	public Historia validarexistenciahistoria(Long idpaciente) {
+		return historiarepo.validarhistoria(idpaciente);
+	}
+
+
+	@Override
+	public Diagnostico validarexistenciadiag(Long idhistoria) {
+		return historiarepo.validardiagnostico(idhistoria);
+	}
     
 }

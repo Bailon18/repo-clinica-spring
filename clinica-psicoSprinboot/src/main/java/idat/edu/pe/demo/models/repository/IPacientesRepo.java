@@ -13,6 +13,9 @@ import idat.edu.pe.demo.models.entity.Paciente;
 @Repository
 public interface IPacientesRepo extends JpaRepository<Paciente, Long> {
 
+	
+	// Consultas personalizadas
+	
     @Query("select  p FROM Paciente p WHERE p.documento = ?1")
     Paciente pacientecita(String documento);
     
@@ -22,9 +25,7 @@ public interface IPacientesRepo extends JpaRepository<Paciente, Long> {
     @Query("select p FROM Paciente p WHERE p.documento = ?1")
     Paciente validarDni(String dni);
     
-    
-    // @Query("select a FROM Afiliacion a WHERE ((psicologo.id = 1 and paciente.id = 8) or  (8 not in (select ab.paciente.id from Afiliacion ab))")
-    
+
     @Query("select a FROM Afiliacion a WHERE (a.psicologo.id = ?1 and a.paciente.id = ?2) or  (?2 not in (select ab.paciente.id from Afiliacion ab))")
     List<Object> busquedaaaa(Long idpsico, Long idpacien);
 }

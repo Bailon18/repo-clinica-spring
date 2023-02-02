@@ -31,6 +31,7 @@ public class Afiliacion implements Serializable {
 
     private Boolean tuvocierre;
 
+    @Temporal(TemporalType.DATE)
     private Date fechacierre;
 
     private String estadocierre;
